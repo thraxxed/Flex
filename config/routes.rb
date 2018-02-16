@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :update]
     resources :memes, only: [:create, :show, :index]
     resources :likes, only: [:create, :destroy]
+    resources :matches, only: [:create, :destroy, :index, :show]
   end
 end
