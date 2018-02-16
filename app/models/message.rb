@@ -11,4 +11,8 @@
 #
 
 class Message < ApplicationRecord
+  validates :user_id, :match_id, :body, presence: true
+
+  belongs_to :user
+  belongs_to :match
 end
