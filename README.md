@@ -24,7 +24,35 @@ Meme Matcher is a Tinder inspired iOS application which matches users together b
 - Write a web scraper which compiles memes from popular websites like reddit.
 
 ### Writing user match algorithm
+- Users are matched once they share 10 liked memes in common.
 
 ## Accomplished over the Weekend
-
+- User auth with google OAuth
+- Rails backend completed (DB table, model, controller, jBuilder)
+  - Users
+    - id
+    - username
+    - image_url
+    - bio
+    - password_digest
+    - session_token
+  - Memes
+    - id
+    - image_url
+  - Likes (joins table for users and memes)
+    - id
+    - user_id
+    - meme_id
+    - liked (boolean)
+  - Matches
+    - id
+    - user1_id
+    - user2_id
+  - Messages
+    - id
+    - user_id
+    - match_id
+    - body
+- Basic Swift App with 1 view 
 ## Group Members & Work Breakdown
+Kevin Chu, Zachary Smith, Seth Little
