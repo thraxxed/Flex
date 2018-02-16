@@ -25,8 +25,13 @@ class User < ApplicationRecord
   has_many :likes
   has_many :messages
 
-  has_many :matches,
+  has_many :matches1,
   foreign_key: :user1_id,
+  primary_key: :id,
+  class_name: 'Match'
+
+  has_many :matches2,
+  foreign_key: :user2_id,
   primary_key: :id,
   class_name: 'Match'
 
