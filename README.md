@@ -33,6 +33,8 @@ Meme Matcher is a Tinder inspired iOS application which matches users together b
     - bio
     - password_digest
     - session_token
+    - latitude
+    - longitude
   - Memes
     - id
     - image_url
