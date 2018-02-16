@@ -3,10 +3,6 @@ Flex Project by Kevin Chu, Zachary Smith, Seth Little
 
 Meme Matcher is a Tinder inspired iOS application which matches users together based on shared interest in internet memes.
 
-## Background and Overview
-
-
-
 ## Functionality & MVP
 - Users may create accounts with a profile picture and a 250 character bio.
 - Users are presented a view with a single meme which they may approve (swipe right) or disapprove (swipe left).
@@ -25,6 +21,7 @@ Meme Matcher is a Tinder inspired iOS application which matches users together b
 
 ### Writing user match algorithm
 - Users are matched once they share 10 liked memes in common.
+- Bonus: make more complex algorithm (ELO)
 
 ## Accomplished over the Weekend
 - User auth with BCrypt
@@ -53,6 +50,7 @@ Meme Matcher is a Tinder inspired iOS application which matches users together b
     - user_id
     - match_id
     - body
+- Familiarize entire team with Swift by following tutorials
 - Basic Swift App with 1 view
 ## Group Members & Work Breakdown
 Kevin Chu, Zachary Smith, Seth Little
