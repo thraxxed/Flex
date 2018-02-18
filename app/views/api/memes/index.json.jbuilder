@@ -8,6 +8,10 @@
 # end
 
 
-@memes.each do |meme|
+# @memes.each do |meme|
+#   json.extract! meme, :id, :image_url
+# end
+
+json.array! (@memes) do |meme|
   json.extract! meme, :id, :image_url
 end
