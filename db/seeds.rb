@@ -9,3 +9,5 @@ Meme.destroy_all
 
 m = Meme.create(image_url: "https://i.redd.it/hrzhyf8irtg01.png")
 m2 = Meme.create(image_url: "https://i.redd.it/bcijtq2h6vg01.jpg")
+m3 = Meme.create(image_url: "http://i0.kym-cdn.com/photos/images/original/001/330/398/734.png")
+m4 = Meme.create(image_url: "https://img.memecdn.com/arthur-meme_o_7206167.jpg")
