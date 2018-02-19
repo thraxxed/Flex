@@ -25,15 +25,17 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
 ![Chat View 2](https://i.imgur.com/cLjr2zI.png)
 
 
-## Technologies & Technical Challenges
+## Technologies
 ### Backend: Rails
 ### Database: PostgreSQL
 ### iOS Language: Swift
 
+## Technical Challenges
 ### Learning Swift
-
+- Swift is a statically typed, compiled language
 ### Composing meme database
-- Write a web scraper which compiles memes from popular websites like reddit.
+- Initially we will manually seed the database with memes
+- Bonus - write scripts that scrape popular websites for recent memes and post to our DB
 
 ### Writing user match algorithm
 - Users are matched once they share 10 liked memes in common.
@@ -69,6 +71,13 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
     - match_id
     - body
 - Familiarize entire team with Swift by following tutorials
-- Basic Swift App with 1 view
-## Group Members & Work Breakdown
+- Swift App with 3 Views (Login, SignUp, MemeView) and segues between them
+- Fetch Memes from database
+- Let users swipe left or right, then display them the next meme
+
+## Group Members
 Kevin Chu, Zachary Smith, Seth Little
+
+## Daily Breakdown
+Day 1 - Persist liking a meme to database, calculate user matches on backend
+Day 2 - MatchIndexView (matches for a user), and MatchShowView (chat and the users bio modal)
