@@ -1,7 +1,12 @@
 class Api::UsersController < ApplicationController
   def create
-    # @user = User.new(user_params)
     @user = User.new(username: params[:username], password: params[:password])
+    @user.bio = ""
+    @user.latitude = 420
+    @user.longitude = 420
+    @user.age = 18
+    @user.gender = "F"
+    @user.picture = File.open('app/assets/images/bee.png')
     if @user.save
       login(@user)
       render :show
