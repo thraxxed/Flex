@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
     # @user.longitude = 420
     @user.age = 18
     @user.gender = "F"
-    @user.picture = File.open('app/assets/images/bee.png')
+    @user.picture = File.open('http://www.dkvine.com/games/dkc/characters/images/diddy_kong_05.png')
     if @user.save
       login(@user)
       render :show
