@@ -1,8 +1,9 @@
 class Api::LikesController < ApplicationController
   def create
     @like = Like.new
-    @like.user_id = current_user.id
+    @like.user_id = params[:user_id]
     @like.meme_id = params[:meme_id]
+    @like.liked = params[:liked]
     if @like.save
       render 'api/memes/show'
     else
