@@ -1,6 +1,8 @@
 class Api::UsersController < ApplicationController
   def create
-    @user = User.new(username: params[:username], password: params[:password])
+    p params
+    @user = User.new(username: params[:username], password: params[:password],
+                     latitude: params[:latitude], longitude: params[:longitude])
     @user.bio = ""
     # @user.latitude = 420
     # @user.longitude = 420
