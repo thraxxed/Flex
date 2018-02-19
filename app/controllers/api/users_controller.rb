@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Api::UsersController < ApplicationController
   def create
     p params
