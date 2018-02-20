@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:picture]
+    if params[:picture] != ""
       user_picture = params[:picture]
       user_picture_file = File.open('user_picture.png', 'wb') do|f|
         f.write(Base64.decode64(user_picture))
