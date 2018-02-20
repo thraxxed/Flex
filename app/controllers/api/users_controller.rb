@@ -30,6 +30,7 @@ class Api::UsersController < ApplicationController
     user_picture_file = File.open('user_picture.png', 'wb') do|f|
       f.write(Base64.decode64(user_picture))
     end
+    p "hey"
     p user_picture_file
     @user.picture = user_picture_file
     # if @user.update(picture: user_picture_file)
