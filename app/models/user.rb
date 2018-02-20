@@ -74,7 +74,18 @@ class User < ApplicationRecord
   def generate_matches
     likes = {}
     self.liked_memes.each do |meme|
-      p meme
+      meme.users_liked.each do |other_user|
+        likes_in_common = 0
+        other_user.liked_memes.each do |other_user_memes|
+          if other_user_memes.users_liked.include?(self)
+            likes_in_common += 1
+            if (likes_in_common == 3)
+              Match.create(user1_id: self.id, user2_id: other_user.id)
+              p "match created"
+            end
+          end
+        end
+      end
     end
   end
 end
