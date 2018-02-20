@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    p params
     @user = User.find(params[:id])
     if params[:picture] != ""
       user_picture = params[:picture]

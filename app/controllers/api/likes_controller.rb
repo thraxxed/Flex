@@ -6,6 +6,7 @@ class Api::LikesController < ApplicationController
     @like.liked = params[:liked]
     if @like.save
       @like.user.generate_matches
+      @meme = @like.meme
       render 'api/memes/show'
     else
       render json: @like.errors.full_messages, status: 401
