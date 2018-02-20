@@ -24,11 +24,14 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    user_picture = params[:picture]
-    user_picture_file = File.open('user_picture.png', 'wb') do|f|
-      f.write(Base64.decode64(user_picture))
+    if params[:picture]
+      user_picture = params[:picture]
+      user_picture_file = File.open('user_picture.png', 'wb') do|f|
+        f.write(Base64.decode64(user_picture))
+      end
+      @user.picture = File.open('user_picture.png')
+
     end
-    @user.picture = File.open('user_picture.png')
     @user.bio = params[:bio] if params[:bio]
     if @user.save
       render :show
