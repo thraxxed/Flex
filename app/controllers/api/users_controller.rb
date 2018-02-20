@@ -34,6 +34,7 @@ class Api::UsersController < ApplicationController
 
     end
     @user.bio = params[:bio] if params[:bio] != ""
+    @user.age = params[:age]
     if @user.save
       render :show
     else
