@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'aws-sdk', '< 3.0'
 gem 'paperclip', '~> 5.2.0'
+gem 'pry-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -42,7 +43,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'pry-rails'
+
   gem 'annotate'
   gem 'binding_of_caller'
   gem 'better_errors'

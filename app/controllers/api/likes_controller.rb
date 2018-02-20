@@ -5,6 +5,7 @@ class Api::LikesController < ApplicationController
     @like.meme_id = params[:meme_id]
     @like.liked = params[:liked]
     if @like.save
+      #generate matches
       render 'api/memes/show'
     else
       render json: @like.errors.full_messages, status: 401
@@ -19,5 +20,9 @@ class Api::LikesController < ApplicationController
     else
       render json: ["could not find that like"], status: 400
     end
+  end
+
+  def generate_matches(user)
+    
   end
 end
