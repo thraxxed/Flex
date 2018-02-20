@@ -72,6 +72,7 @@ class User < ApplicationRecord
   end
 
   def generate_matches
+    likes = {}
     self.liked_memes.each do |meme|
       p meme
     end

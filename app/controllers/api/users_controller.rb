@@ -29,6 +29,7 @@ class Api::UsersController < ApplicationController
       f.write(Base64.decode64(user_picture))
     end
     @user.picture = File.open('user_picture.png')
+    @user.bio = params[:bio] if params[:bio]
     if @user.save
       render :show
     else
