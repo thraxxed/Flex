@@ -35,6 +35,10 @@ class User < ApplicationRecord
   primary_key: :id,
   class_name: 'Match'
 
+  has_many :liked_memes,
+  through: :likes,
+  source: :meme
+
   has_attached_file :picture, default_url: "https://res.cloudinary.com/dbk2furpp/image/upload/v1517363601/default_profile_pic_heczvd.jpg"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 
@@ -49,7 +53,6 @@ class User < ApplicationRecord
   end
 
   def password=(password)
-    p "hey"
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
@@ -70,5 +73,6 @@ class User < ApplicationRecord
 
   def generate_matches
     p "heyyyyy"
+
   end
 end
