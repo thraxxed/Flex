@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219180528) do
+ActiveRecord::Schema.define(version: 20180220001856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20180219180528) do
     t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "picture_file_name", null: false
-    t.string "picture_content_type", null: false
-    t.integer "picture_file_size", null: false
-    t.datetime "picture_updated_at", null: false
+    t.string "picture_file_name"
+    t.string "picture_content_type"
+    t.integer "picture_file_size"
+    t.datetime "picture_updated_at"
     t.string "bio", null: false
     t.float "latitude", null: false
     t.float "longitude", null: false
