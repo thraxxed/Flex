@@ -24,13 +24,16 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    p params
+    # p params
     @user = User.find(params[:id])
     user_picture = params[:picture]
     user_picture_file = File.open('user_picture.png', 'wb') do|f|
       f.write(Base64.decode64(user_picture))
     end
-    if @user.update(picture: user_picture_file)
+    p user_picture_file
+    @user.picture = user_picture_file
+    # if @user.update(picture: user_picture_file)
+    if @user.save
       render :show
     else
       render json: @user.errors.full_messages, status: 422
