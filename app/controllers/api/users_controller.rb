@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
     end
     p "hey"
     p user_picture_file
-    @user.picture = user_picture_file
+    @user.picture = File.open(user_picture_file)
     # if @user.update(picture: user_picture_file)
     if @user.save
       render :show
