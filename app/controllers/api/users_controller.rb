@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
       @user.picture = File.open('user_picture.png')
 
     end
-    @user.bio = params[:bio] if params[:bio]
+    @user.bio = params[:bio] if params[:bio] != ""
     if @user.save
       render :show
     else
