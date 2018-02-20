@@ -8,7 +8,8 @@ class Api::UsersController < ApplicationController
     @user.bio = ""
 
     @user.age = 18
-    @user.gender = "F"
+    @user.gender = "not_assigned"
+    # @user.gender = params[:gender] if params[:gender] != ""
 
     if @user.save
       login(@user)
@@ -35,6 +36,7 @@ class Api::UsersController < ApplicationController
     end
     @user.bio = params[:bio] if params[:bio] != ""
     @user.age = params[:age]
+    @user.gender = params[:gender] if params[:gender] != ""
     if @user.save
       render :show
     else
