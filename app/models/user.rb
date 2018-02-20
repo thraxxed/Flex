@@ -80,8 +80,10 @@ class User < ApplicationRecord
           if other_user_memes.users_liked.include?(self)
             likes_in_common += 1
             if (likes_in_common == 3)
+              unless Match.find_by(user1_id: self.id, user2_id: other_user.id)
+                  or Match.find_by(user2_id: self.id, user1_id: other_user.id)
+                  or self.id == other_user.id
               Match.create(user1_id: self.id, user2_id: other_user.id)
-              p "match created"
             end
           end
         end

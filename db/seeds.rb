@@ -8,6 +8,7 @@
 Meme.destroy_all
 User.destroy_all
 Like.destroy_all
+Match.destroy_all
 
 m = Meme.create(image_url: "https://i.redd.it/hrzhyf8irtg01.png")
 m2 = Meme.create(image_url: "https://i.redd.it/bcijtq2h6vg01.jpg")
