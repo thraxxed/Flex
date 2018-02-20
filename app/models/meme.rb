@@ -10,5 +10,8 @@
 
 class Meme < ApplicationRecord
   validates :image_url, presence: true
-  has_many :likes 
+  has_many :likes
+  has_many :users_liked,
+  through: :likes,
+  source: :user
 end
