@@ -6,5 +6,3 @@ json.longitude @user.longitude
 json.picture_url @user.picture.url
 json.age @user.age
 json.gender @user.gender
-json.matches1 @user.matches1
-json.matches2 @user.matches2
