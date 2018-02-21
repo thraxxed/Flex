@@ -30,10 +30,18 @@ class User < ApplicationRecord
   primary_key: :id,
   class_name: 'Match'
 
+  has_many :matched_users1,
+  through: :matches1,
+  source: :user2
+
   has_many :matches2,
   foreign_key: :user2_id,
   primary_key: :id,
   class_name: 'Match'
+
+  has_many :matched_users2,
+  through: :matches2,
+  source: :user1
 
   has_many :liked_memes,
   through: :likes,
@@ -95,5 +103,9 @@ class User < ApplicationRecord
         end
       end
     end
+  end
+
+  def matches
+    self.matched_users1 + self.matched_users2
   end
 end
