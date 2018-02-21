@@ -19,7 +19,9 @@ class Api::UsersController < ApplicationController
   end
 
   def index
+    p "hey!"
     p params
+    @users = User.all
   end
 
   def show
