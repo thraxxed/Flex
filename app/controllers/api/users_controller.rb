@@ -21,6 +21,7 @@ class Api::UsersController < ApplicationController
   def index
     p "hey!"
     p params
+    p current_user
     @users = User.all
   end
 
