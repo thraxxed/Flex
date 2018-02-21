@@ -82,7 +82,7 @@ class User < ApplicationRecord
             if (likes_in_common == 3)
               same_user = self.id == other_user.id
               gender_match = self.gender != other_user.gender
-              unless (same_user || Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id))
+              unless (gender_match && (same_user || Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
                 Match.create(user1_id: self.id, user2_id: other_user.id)
               end
             end

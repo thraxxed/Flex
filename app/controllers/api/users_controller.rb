@@ -9,7 +9,6 @@ class Api::UsersController < ApplicationController
 
     @user.age = 18
     @user.gender = "F"
-    # @user.gender = params[:gender] if params[:gender] != ""
 
     if @user.save
       login(@user)
