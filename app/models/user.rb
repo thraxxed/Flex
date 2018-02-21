@@ -80,9 +80,12 @@ class User < ApplicationRecord
           if other_user_memes.users_liked.include?(self)
             likes_in_common += 1
             if (likes_in_common == 3)
-              same_user = self.id == other_user.id
+              not_same_user = self.id != other_user.id
               gender_match = self.gender != other_user.gender
-              unless (gender_match && (same_user || Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
+              latitude_match = (self.latitude > other_user.latitude - 10 && self.latitude < other_user.latitude + 10)
+              longitude_match = (self.longitude > other_user.longitude - 10 && self.longitude < other_user.longitude + 10)
+              match = not_same_user && gender_match && latitude_match && longitude_match
+              unless (match && (Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
                 Match.create(user1_id: self.id, user2_id: other_user.id)
               end
             end
