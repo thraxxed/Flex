@@ -84,6 +84,7 @@ class User < ApplicationRecord
               gender_match = self.gender != other_user.gender
               latitude_match = (self.latitude > other_user.latitude - 10 && self.latitude < other_user.latitude + 10)
               longitude_match = (self.longitude > other_user.longitude - 10 && self.longitude < other_user.longitude + 10)
+              p not_same_user
               match = not_same_user && gender_match && latitude_match && longitude_match
               unless (match && (Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
                 Match.create(user1_id: self.id, user2_id: other_user.id)
