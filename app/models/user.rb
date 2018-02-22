@@ -83,21 +83,25 @@ class User < ApplicationRecord
     likes = {}
     self.liked_memes.each do |meme|
       meme.users_liked.each do |other_user|
+        next if other_user.gender == self.gender
+        next if self.id == other_user.id
+        next if !(self.latitude > other_user.latitude - 10 && self.latitude < other_user.latitude + 10)
+        next if !(self.longitude > other_user.longitude - 10 && self.longitude < other_user.longitude + 10)
         likes_in_common = 0
         other_user.liked_memes.each do |other_user_memes|
           if other_user_memes.users_liked.include?(self)
             likes_in_common += 1
             if (likes_in_common == 3)
-              not_same_user = self.id != other_user.id
-              gender_match = self.gender != other_user.gender
-              latitude_match = (self.latitude > other_user.latitude - 10 && self.latitude < other_user.latitude + 10)
-              longitude_match = (self.longitude > other_user.longitude - 10 && self.longitude < other_user.longitude + 10)
-              match = not_same_user && gender_match && latitude_match && longitude_match
-              if (match)
+              # not_same_user = self.id != other_user.id
+              # gender_match = self.gender != other_user.gender
+              # latitude_match = (self.latitude > other_user.latitude - 10 && self.latitude < other_user.latitude + 10)
+              # longitude_match = (self.longitude > other_user.longitude - 10 && self.longitude < other_user.longitude + 10)
+              # match = not_same_user && gender_match && latitude_match && longitude_match
+              # if (match)
                 unless (match && (Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
                   Match.create(user1_id: self.id, user2_id: other_user.id)
                 end
-              end
+              # end
             end
           end
         end
