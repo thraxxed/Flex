@@ -1,6 +1,7 @@
 class Api::MemesController < ApplicationController
   def index
-    @memes = Meme.all
+    # @memes = Meme.all
+    @memes = Meme.where.not(id: current_user.liked_memes.pluck(:id))
   end
 
   def create
