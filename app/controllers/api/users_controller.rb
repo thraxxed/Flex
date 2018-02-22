@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
     p "hey!"
     p params
     p current_user
-    @users = current_user.matches
+    @users = current_user.matches if current_user
   end
 
   def show
