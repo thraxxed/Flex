@@ -21,4 +21,8 @@ class Match < ApplicationRecord
   foreign_key: :user2_id,
   primary_key: :id,
   class_name: 'User'
+
+  has_many :messages
+
+  
 end
