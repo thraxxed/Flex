@@ -82,8 +82,6 @@ class User < ApplicationRecord
   end
 
   def generate_matches
-    #TODO: Refactor
-    likes = {}
     self.liked_memes.each do |meme|
       meme.users_liked.each do |other_user|
         next if Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)
@@ -110,8 +108,6 @@ class User < ApplicationRecord
   def liked_memes
     self.seen_memes.where("liked = true")
   end
-
-
 
   def matches
     self.matched_users1 + self.matched_users2
