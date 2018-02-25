@@ -4,7 +4,7 @@ class Api::MessagesController < ApplicationController
     unless match
       match = Match.find_by(user2_id: params[:id], user1_id: current_user.id)
     end
-    @messages = match.messages
+    @messages = match.messages.reverse[0..11]
   end
 
   def create
