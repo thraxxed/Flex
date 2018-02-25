@@ -95,7 +95,7 @@ class User < ApplicationRecord
         other_user.liked_memes.each do |other_user_memes|
           if other_user_memes.users_liked.include?(self)
             likes_in_common += 1
-            if (likes_in_common == 3)
+            if (likes_in_common == 8)
                 unless ((Match.find_by(user1_id: self.id, user2_id: other_user.id) || Match.find_by(user2_id: self.id, user1_id: other_user.id)))
                   Match.create(user1_id: self.id, user2_id: other_user.id)
                 end
