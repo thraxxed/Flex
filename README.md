@@ -1,5 +1,8 @@
 # Meme Matcher
-Flex Project by Kevin Chu, Zachary Smith, Seth Little
+Authors: 
+- Kevin Chu - (https://github.com/kchu93)
+- Zachary Smith - (https://github.com/zzachsmith)
+- Seth Little - (https://github.com/thraxxed/)
 
 Meme Matcher is a Tinder inspired iOS application which matches users together based on shared interest in internet memes.
 
@@ -10,7 +13,7 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
 - Users are presented a view with a single meme which they may approve (swipe right) or disapprove (swipe left).
 - Users are "matched" together once a certain threshold of similarity in meme taste has been reached.
 - Users may view all matches and open up a chat view with each individual match.
-- Users set a location radius for matches.
+- Users matches take into account location and gender preferences
 
 ## Wireframes
 
@@ -30,54 +33,75 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
 ### Database: PostgreSQL
 ### iOS Language: Swift
 
-## Technical Challenges
+## Application Storyboard
+![Storyboard](https://i.imgur.com/gdg3OGX.png)
+
+## Technical Challenges and Implementation Details
 ### Learning Swift
 - Swift is a statically typed, compiled language
-### Composing meme database
-- Initially we will manually seed the database with memes
-- Bonus - write scripts that scrape popular websites for recent memes and post to our DB
 
-### Writing user match algorithm
-- Users are matched once they share 10 liked memes in common.
-- Bonus: make more complex algorithm (ELO)
+### User Match Algorithm
+- Users are matched once they share 8 liked memes in common
 
-## Accomplished over the Weekend
-- User auth with BCrypt
-- Rails backend completed (DB table, model, controller, jBuilder)
-  - Users
-    - id
-    - username
-    - image_url
-    - bio
-    - password_digest
-    - session_token
-    - latitude
-    - longitude
-  - Memes
-    - id
-    - image_url
-  - Likes (joins table for users and memes)
-    - id
-    - user_id
-    - meme_id
-    - liked (boolean)
-  - Matches
-    - id
-    - user1_id
-    - user2_id
-  - Messages
-    - id
-    - user_id
-    - match_id
-    - body
-- Familiarize entire team with Swift by following tutorials
-- Swift App with 3 Views (Login, SignUp, MemeView) and segues between them
-- Fetch Memes from database
-- Let users swipe left or right, then display them the next meme
+### Handling User-uploaded images
+- Pictures taken by iPhone cameras are typically very large files.  To prevent the dissatisfaction when a user must wait a long time when uploading their profile picture, we efficiently compress the image to a reasonable size while retaining much of its quality.
+- Additionally, the image must be encoded as a string before being sent up to our back-end API as an HTTP Parameter
 
-## Group Members
-Kevin Chu, Zachary Smith, Seth Little
-
-## Daily Breakdown
-Day 1 - Persist liking a meme to database, calculate user matches on backend
-Day 2 - MatchIndexView (matches for a user), and MatchShowView (chat and the users bio modal)
+```Swift
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        // Set photoImageView to display the selected image.
+        photoImageView.image = selectedImage.resizedTo1MB()
+        
+        let imageData:Data = UIImagePNGRepresentation(photoImageView.image!)!
+        imageStr = imageData.base64EncodedString()
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
+    }
+ ```
+ 
+ ### Making requests to our Rails back-end API
+ 
+ ```Swift
+    func getMessages(for id: Int, completion: ((Result<[Message]>) -> Void)?) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "meme-matcher.herokuapp.com"
+        urlComponents.path = "/api/messages"
+        
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: "\(MemeMatcher.currentMatch)")]
+        
+        guard let url = urlComponents.url else { fatalError("Could not create URL from components") }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: request) { (responseData, response, responseError) in
+            DispatchQueue.main.async {
+                if let error = responseError {
+                    completion?(.failure(error))
+                } else if let jsonData = responseData {
+                    let decoder = JSONDecoder()
+                    do {
+                        let messages = try decoder.decode([Message].self, from: jsonData)
+                        completion?(.success(messages))
+                    } catch {
+                        completion?(.failure(error))
+                    }
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Data was not retrieved from request"]) as Error
+                    completion?(.failure(error))
+                }
+            }
+        }
+        
+        task.resume()
+    } 
+ ```
