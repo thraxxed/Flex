@@ -10,11 +10,13 @@ User.destroy_all
 Like.destroy_all
 Match.destroy_all
 
-zach = User.create(username: "zach", password: "password", bio: "zach", gender: "M", latitude: 420, longitude: 420, age: 20)
-seth = User.create(username: "seth", password: "password", bio: "seth", gender: "M", latitude: 420, longitude: 420, age: 20)
-kevin = User.create(username: "kevin", password: "password", bio: "kevin", gender: "M", latitude: 420, longitude: 420, age: 20)
+zach = User.create(username: "Zach", password: "password", bio: "zach", gender: "M", latitude: 420, longitude: 420, age: 20)
+seth = User.create(username: "Seth", password: "password", bio: "seth", gender: "M", latitude: 420, longitude: 420, age: 20)
+kevin = User.create(username: "Kevin", password: "password", bio: "kevin", gender: "M", latitude: 420, longitude: 420, age: 20)
 
-girl = User.create(username: "hottbabe", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
+girl = User.create(username: "Emily", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
+girl2 = User.create(username: "Sarah", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
+girl3 = User.create(username: "Ellen", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
 
 
 m = Meme.create(image_url: "https://i.redd.it/hrzhyf8irtg01.png")
