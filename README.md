@@ -1,5 +1,6 @@
 # Meme Matcher
 Demo Site: https://kchu93.github.io/memematcherwebsite/
+
 Authors:
 - Kevin Chu - (https://github.com/kchu93)
 - Zachary Smith - (https://github.com/zzachsmith)
