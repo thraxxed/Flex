@@ -1,5 +1,6 @@
 # Meme Matcher
-Authors: 
+Demo Site: https://kchu93.github.io/memematcherwebsite/
+Authors:
 - Kevin Chu - (https://github.com/kchu93)
 - Zachary Smith - (https://github.com/zzachsmith)
 - Seth Little - (https://github.com/thraxxed/)
@@ -49,38 +50,38 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
 
 ```Swift
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        
+
         // Set photoImageView to display the selected image.
         photoImageView.image = selectedImage.resizedTo1MB()
-        
+
         let imageData:Data = UIImagePNGRepresentation(photoImageView.image!)!
         imageStr = imageData.base64EncodedString()
-        
+
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
  ```
- 
+
  ### Making requests to our Rails back-end API
- 
+
  ```Swift
     func getMessages(for id: Int, completion: ((Result<[Message]>) -> Void)?) {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "meme-matcher.herokuapp.com"
         urlComponents.path = "/api/messages"
-        
+
         urlComponents.queryItems = [URLQueryItem(name: "id", value: "\(MemeMatcher.currentMatch)")]
-        
+
         guard let url = urlComponents.url else { fatalError("Could not create URL from components") }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        
+
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
@@ -101,7 +102,7 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
                 }
             }
         }
-        
+
         task.resume()
-    } 
+    }
  ```
