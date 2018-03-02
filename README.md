@@ -17,19 +17,6 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
 - Users may view all matches and open up a chat view with each individual match.
 - Users matches take into account location and gender preferences
 
-## Wireframes
-
-![Session View](https://i.imgur.com/FDRIOZj.png)
-
-![Match Page](https://i.imgur.com/3uJnNGi.png)
-
-![User Profile](https://i.imgur.com/KIw57CN.png)
-
-![Chat View 1](https://i.imgur.com/akrLA7v.png)
-
-![Chat View 2](https://i.imgur.com/cLjr2zI.png)
-
-
 ## Technologies
 ### Backend: Rails
 ### Database: PostgreSQL
