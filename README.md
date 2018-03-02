@@ -54,7 +54,7 @@ Link to iOS repo: https://github.com/thraxxed/MemeMatcher-iOS
     }
  ```
 
- ### Making requests to our Rails back-end API
+ ### Making requests to our Rails JSON API
 
  ```Swift
     func getMessages(for id: Int, completion: ((Result<[Message]>) -> Void)?) {
