@@ -10,24 +10,24 @@ User.destroy_all
 Like.destroy_all
 Match.destroy_all
 
-zach = User.create(username: "Zach", password: "password", bio: "zach", gender: "M", latitude: 420, longitude: 420, age: 20)
+zach = User.create(username: "Zach", password: "password", bio: "zach", gender: "M", latitude: 37.785834, longitude: -122.406417, age: 20)
 zach.picture = File.open('app/assets/images/bee.png')
 zach.save
 
-seth = User.create(username: "Seth", password: "password", bio: "seth", gender: "M", latitude: 420, longitude: 420, age: 20)
+seth = User.create(username: "Seth", password: "password", bio: "seth", gender: "M", latitude: 37.785834, longitude: -122.406417, age: 20)
 seth.picture = File.open('app/assets/images/diddy.jpg')
 seth.save
 
-kevin = User.create(username: "Kevin", password: "password", bio: "kevin", gender: "M", latitude: 420, longitude: 420, age: 20)
+kevin = User.create(username: "Kevin", password: "password", bio: "kevin", gender: "M", latitude: 37.785834, longitude: -122.406417, age: 20)
 kevin.picture = File.open('app/assets/images/yoshi.jpg')
 kevin.save
 
-girl = User.create(username: "Emily", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
+girl = User.create(username: "Emily", password: "password", bio: "cool girl", gender: "F", latitude: 37.785834, longitude: -122.406417, age: 20)
 girl.picture = File.open('app/assets/images/anime.jpg')
 girl.save
 
-girl2 = User.create(username: "Sarah", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
-girl3 = User.create(username: "Ellen", password: "password", bio: "cool girl", gender: "F", latitude: 420, longitude: 420, age: 20)
+girl2 = User.create(username: "Sarah", password: "password", bio: "cool girl", gender: "F", latitude: 37.785834, longitude: -122.406417, age: 20)
+girl3 = User.create(username: "Ellen", password: "password", bio: "cool girl", gender: "F", latitude: 37.785834, longitude: -122.406417, age: 20)
 
 
 # m = Meme.create(image_url: "https://i.redd.it/hrzhyf8irtg01.png")
@@ -71,7 +71,7 @@ Meme.create(image_url: "https://res.cloudinary.com/dhjxj05jc/image/upload/v15193
 # Meme.create(image_url: "https://res.cloudinary.com/dhjxj05jc/image/upload/v1519361772/Screen_Shot_2018-02-22_at_8.55.50_PM_e3ze5e.png")
 Meme.create(image_url: "https://res.cloudinary.com/dhjxj05jc/image/upload/v1519361795/Screen_Shot_2018-02-22_at_8.56.17_PM_iyflbq.png")
 Meme.create(image_url: "https://s-media-cache-ak0.pinimg.com/originals/5b/ba/9d/5bba9ddcc0fa1b3e1cfa714cce371d53.jpg")
-m6 = Meme.create(image_url: "https://res.cloudinary.com/dhjxj05jc/image/upload/v1517887824/qo6lnevxwjfbweiu2joc.jpg")
+# m6 = Meme.create(image_url: "https://res.cloudinary.com/dhjxj05jc/image/upload/v1517887824/qo6lnevxwjfbweiu2joc.jpg")
 
 
 
